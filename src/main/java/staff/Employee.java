@@ -11,8 +11,12 @@ public abstract class Employee {
         this.salary = salary;
     }
 
+    public void setName(String newName) {
+        if (newName != null && !newName.equals("")) this.name = newName;
+    }
+
     public void raiseSalary(double amount) {
-        this.salary += amount;
+        if (amount > 0) this.salary += amount;
     }
 
     public double payBonus() {

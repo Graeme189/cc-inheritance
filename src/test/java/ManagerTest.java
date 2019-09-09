@@ -19,6 +19,24 @@ public class ManagerTest {
     }
 
     @Test
+    public void testSetName() {
+        manager.setName("Ronald");
+        assertEquals("Ronald", manager.getName());
+    }
+
+    @Test
+    public void testSetNameNull() {
+        manager.setName(null);
+        assertEquals("Ryan", manager.getName());
+    }
+
+    @Test
+    public void testSetNameEmptyString() {
+        manager.setName("");
+        assertEquals("Ryan", manager.getName());
+    }
+
+    @Test
     public void testNiNumber() {
         assertEquals("JG XX 01", manager.getNiNumber());
     }
@@ -37,6 +55,12 @@ public class ManagerTest {
     public void testRaiseSalary() {
         manager.raiseSalary(1000);
         assertEquals(31000, manager.getSalary(), epsilon);
+    }
+
+    @Test
+    public void testRaiseSalaryNoNegative() {
+        manager.raiseSalary(-1000);
+        assertEquals(30000, manager.getSalary(), epsilon);
     }
 
     @Test
