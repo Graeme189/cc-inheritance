@@ -19,6 +19,24 @@ public class DeveloperTest {
     }
 
     @Test
+    public void testSetName() {
+        developer.setName("Ronald");
+        assertEquals("Ronald", developer.getName());
+    }
+
+    @Test
+    public void testSetNameNull() {
+        developer.setName(null);
+        assertEquals("Ryan", developer.getName());
+    }
+
+    @Test
+    public void testSetNameEmptyString() {
+        developer.setName("");
+        assertEquals("Ryan", developer.getName());
+    }
+    
+    @Test
     public void testNiNumber() {
         assertEquals("JG XX 01", developer.getNiNumber());
     }
@@ -32,6 +50,12 @@ public class DeveloperTest {
     public void testRaiseSalary() {
         developer.raiseSalary(1000);
         assertEquals(31000, developer.getSalary(), epsilon);
+    }
+
+    @Test
+    public void testRaiseSalaryNoNegative() {
+        developer.raiseSalary(-1000);
+        assertEquals(30000, developer.getSalary(), epsilon);
     }
 
     @Test

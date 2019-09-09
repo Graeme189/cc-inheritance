@@ -19,6 +19,24 @@ public class DirectorTest {
     }
 
     @Test
+    public void testSetName() {
+        director.setName("Ronald");
+        assertEquals("Ronald", director.getName());
+    }
+
+    @Test
+    public void testSetNameNull() {
+        director.setName(null);
+        assertEquals("Ryan", director.getName());
+    }
+
+    @Test
+    public void testSetNameEmptyString() {
+        director.setName("");
+        assertEquals("Ryan", director.getName());
+    }
+    
+    @Test
     public void testNiNumber() {
         assertEquals("JG XX 01", director.getNiNumber());
     }
@@ -40,9 +58,15 @@ public class DirectorTest {
     }
 
     @Test
+    public void testRaiseSalaryNoNegative() {
+        director.raiseSalary(-1000);
+        assertEquals(30000, director.getSalary(), epsilon);
+    }
+
+    @Test
     public void testPayBonus() {
         director.payBonus();
-        assertEquals(300, director.payBonus(), epsilon);
+        assertEquals(600, director.payBonus(), epsilon);
     }
 
     @Test
